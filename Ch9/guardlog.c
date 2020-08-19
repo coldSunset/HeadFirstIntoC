@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 
 char* now()
 {
@@ -16,10 +17,16 @@ int main()
 {
 	char comment[80]; 
 	char cmd[120]; 
-
+	char* timestring = NULL; 
 	fgets(comment, 80, stdin);
-	sprintf(cmd, "echo '%s %s' >> reports.log", comment, now()); 
+	comment[strlen(comment)-1] =0;
+	timestring = now(); 
+	timestring[strlen(timestring)-1]=0;
 
+	sprintf(cmd, "echo '%s %s' >> reports.log", comment, timestring); 
+	puts("-----");
+	puts(cmd); 
+	puts("-----");
 	system(cmd); 
 	return 0; 
 }
