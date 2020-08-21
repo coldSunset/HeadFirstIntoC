@@ -12,7 +12,7 @@ int main(int argc, char* argv[])
 
 	int times = 3; 
 	char* phrase = argv[1]; 
-
+    const char* path = "./";
 
 	int i; 
 
@@ -22,11 +22,9 @@ int main(int argc, char* argv[])
 		sprintf(var, "RSS_FEED=%s", feeds[i]);
 		puts(feeds[i]);
 		char* vars[] = {var, NULL}; 
-		char* path = "C:/Users/ravin/AppData/Local/Programs/Python/Python37/python.exe";
 		if( execle(path, path,"./rssgossip.py", phrase, NULL, vars)==-1)
 		{
-			fprintf(stderr, "Can't run script: %s\n", strerror(errno));
-			puts("error occured"); 
+			fprintf(stderr, "Can't run script: %s\n", strerror(errno)); 
 			return 1; 
 		}
 	}
