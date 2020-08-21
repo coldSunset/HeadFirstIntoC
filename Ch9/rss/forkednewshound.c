@@ -22,11 +22,25 @@ int main(int argc, char* argv[])
 		sprintf(var, "RSS_FEED=%s", feeds[i]);
 		puts(feeds[i]);
 		char* vars[] = {var, NULL}; 
-		if( execle(path, path,"./rssgossip.py", phrase, NULL, vars)==-1)
+
+		pid_t pid = fork(); 
+
+		if(!pid) //child process
 		{
+		if( execle(path, path,"./rssgossip.py", phrase, NULL, vars)==-1)
+			{
 			fprintf(stderr, "Can't run script: %s\n", strerror(errno)); 
 			return 1; 
+			}
 		}
+		if(pid == -1)
+		{
+			fprintf(stderr, "Can't fork process: %s\n", strerror(errno));
+		}
+
+
+
+
 	}
 
 	return 0; 
