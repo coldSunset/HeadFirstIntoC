@@ -84,9 +84,8 @@ int main()
 				current->no = no_node; 
 
 				/* Then replace this question with the new question*/
-				printf("Give me a question that is TRUE %s but not for %s ", suspect, current->question);	
+				printf("Give me a question that is TRUE for %s but not for %s ", suspect, current->question);	
 				fgets(question, 80, stdin); 
-				free(current->question); 
 				current->question = strdup(question); 
 
 				break; 

@@ -19,7 +19,7 @@ int main()
 
 	fgets(comment, 80, stdin);
 	sprintf(cmd, "echo '%s %s' >> reports.log", comment, now()); 
-
+	puts(cmd); 
 	system(cmd); 
 	return 0; 
 }
