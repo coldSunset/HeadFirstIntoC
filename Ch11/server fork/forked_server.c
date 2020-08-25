@@ -113,9 +113,9 @@ int main(int argc, char** argv)
 	char buf[255]; 
 	int idx =0; 
 
-	pid_t pid = fork(); 
-	if(pid == -1)
-		error("Can't fork process"); 
+	// pid_t pid = fork(); 
+	// if(pid == -1)
+	// 	error("Can't fork process"); 
 while(1) //You need to loop the accept/begin talking section  
 {
 
@@ -123,7 +123,7 @@ while(1) //You need to loop the accept/begin talking section
 	if(connect_d == -1)
 		error("Can't open secondary socket"); 
 
-	if(!pid) //child process
+	if(!fork()) //child process
 	{
 		close(listener_d);
   	if(say(connect_d, server_resp[idx]) != -1)
